@@ -18,7 +18,9 @@ export default function Page() {
   if (!profDetails) {
     return (
       <div className="flex justify-center items-center h-screen bg-black">
-        <h1 className="text-2xl font-bold">Professor not found</h1>
+        <div className="text-center bg-slate-950 w-[90vw] md:w-1/2 p-2 h-1/3 rounded-xl flex justify-center items-center border-2 border-slate-700"> 
+          <h1 className="text-xl md:text-4xl text-white font-serif font-bold">404 : Page not found</h1>
+        </div>
       </div>
     );
   }

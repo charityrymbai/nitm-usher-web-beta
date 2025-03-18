@@ -6,12 +6,8 @@ import Search from "./search"
 
 export default function Hero() {
     const scrollRef = useRef(null)
-    const [dpr, setDpr] = useState(1.5) // Device Pixel Ratio
+    const [dpr, setDpr] = useState(1.5) 
     const isDarkMode =  "dark"
-
-    const scrollToProjects = () => {
-        scrollRef.current?.scrollIntoView({ behavior: "smooth" })
-    }
 
     return (
         <section className="relative min-h-screen h-fit w-full mb-16 bg-black">
@@ -35,15 +31,14 @@ export default function Hero() {
             </div>
 
             <div className="relative z-10 flex flex-col items-center p-20  h-screen text-center">
-                <div className=" backdrop-blur-sm p-8 rounded-lg">
-                    <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                <div className=" backdrop-blur-sm pt-8 w-[80vw] md:w-fit rounded-lg ">
+                    <h1 className="text-4xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                         NITM USHER
                     </h1>
-                    <p className="text-xl md:text-2xl mb-8 max-w-2xl">Holds your hand and don't let you get lost</p>
+                    <p className="text-md italic text-slate-100 md:text-xl mb-8 max-w-2xl">"Holds your hand and don't let you get lost"</p>
                     <Search />
                 </div>
             </div>
-            <div ref={scrollRef} />
         </section>
     )
 }
