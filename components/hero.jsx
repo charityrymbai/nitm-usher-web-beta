@@ -1,0 +1,49 @@
+"use client"
+import { Canvas } from "@react-three/fiber"
+import { OrbitControls, PerspectiveCamera, Environment, Stars, PerformanceMonitor } from "@react-three/drei"
+import { Suspense, useRef, useState } from "react"
+import Search from "./search"
+
+export default function Hero() {
+    const scrollRef = useRef(null)
+    const [dpr, setDpr] = useState(1.5) // Device Pixel Ratio
+    const isDarkMode =  "dark"
+
+    const scrollToProjects = () => {
+        scrollRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    return (
+        <section className="relative min-h-screen h-fit w-full mb-16 bg-black">
+            <div className="earth absolute inset-0 z-0">
+                <Canvas dpr={dpr} shadows>
+                    <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
+                    <Suspense fallback= {null}>
+                        <Environment preset={isDarkMode ? "night" : "sunset"} />
+                        {isDarkMode && <Stars radius={100} depth={50} count={7000} factor={4} saturation={0} fade speed={0.5} />}
+                    </Suspense>
+                    <OrbitControls
+                        enableZoom={false}
+                        enablePan={false}
+                        autoRotate
+                        autoRotateSpeed={0.5}
+                        maxPolarAngle={Math.PI / 1.8}
+                        minPolarAngle={Math.PI / 3}
+                    />
+                    <PerformanceMonitor onDecline={() => setDpr(1)} onIncline={() => setDpr(1.5)} />
+                </Canvas>
+            </div>
+
+            <div className="relative z-10 flex flex-col items-center p-20  h-screen text-center">
+                <div className=" backdrop-blur-sm p-8 rounded-lg">
+                    <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        NITM USHER
+                    </h1>
+                    <p className="text-xl md:text-2xl mb-8 max-w-2xl">Holds your hand and don't let you get lost</p>
+                    <Search />
+                </div>
+            </div>
+            <div ref={scrollRef} />
+        </section>
+    )
+}
