@@ -31,13 +31,13 @@ export default function Search() {
     <div className="w-full max-w-md mx-auto mt-10 relative">
       <Input
         type="text"
-        placeholder="Search..."
+        placeholder="Start with a stakeholder's name ..."
         value={query}
         onChange={(e) => {
           setQuery(e.target.value);
           handleSearch();
         }}
-        className="w-full border text-white font-bold border-gray-300 p-2 rounded-md shadow-sm focus:ring focus:ring-blue-300"
+        className="w-full border text-white font-bold border-gray-300 p-3 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:scale-105 transition-all duration-300"
       />
       {filtersearchProfessors.length > 0 && (
         <Card className="absolute w-full mt-3 bg-black border border-gray-600 rounded-md shadow-lg overflow-hidden p-0">

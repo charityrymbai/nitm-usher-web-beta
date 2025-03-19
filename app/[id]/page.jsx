@@ -3,7 +3,9 @@
 import { searchById } from "@/lib/searchFn";
 import { useParams } from "next/navigation";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-
+import { Canvas } from "@react-three/fiber"
+import { OrbitControls, PerspectiveCamera, Environment, Stars, PerformanceMonitor } from "@react-three/drei"
+import { Suspense, useState } from "react"
 export default function Page() {
   const { id } = useParams();
 
@@ -28,11 +30,31 @@ export default function Page() {
   const { name, office, location } = profDetails;
   const block = office[1];
   const floor = office[2];
+  const [dpr, setDpr] = useState(1.5) 
+  const isDarkMode =  "dark"
 
   return (
-    <div className="size-18 bg-radial-[at_25%_25%] from-gray-500 to-black to-75% h-fit min-h-screen w-full p-10">
+    <div className=" bg-radial-[at_25%_25%] from-gray-500 to-black to-75% h-fit min-h-screen w-full p-10">
       <div className="p-4 sm:p-0 max-w-4xl mx-auto mt-10 space-y-6">
-        <Card className="shadow-2xl bg-transparent/10 backdrop-blur-2xl hover:scale-110 transition-all duration-300">
+        <div className="earth absolute inset-0 z-0">
+                        <Canvas dpr={dpr} shadows>
+                            <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
+                            <Suspense fallback= {null}>
+                                <Environment preset={isDarkMode ? "night" : "sunset"} />
+                                {isDarkMode && <Stars radius={100} depth={50} count={7000} factor={4} saturation={0} fade speed={0.5} />}
+                            </Suspense>
+                            <OrbitControls
+                                enableZoom={false}
+                                enablePan={false}
+                                autoRotate
+                                autoRotateSpeed={0.5}
+                                maxPolarAngle={Math.PI / 1.8}
+                                minPolarAngle={Math.PI / 3}
+                            />
+                            <PerformanceMonitor onDecline={() => setDpr(1)} onIncline={() => setDpr(1.5)} />
+                        </Canvas>
+                    </div>
+        <Card className="shadow-2xl bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl p-6 hover:scale-110 transition-all duration-300">
           <CardHeader>
             <CardTitle className="text-4xl font-serif text-slate-100 font-bold text-center">{name}</CardTitle>
           </CardHeader>
@@ -57,7 +79,7 @@ export default function Page() {
             </CardContent>
           </Card>
         </div>
-        <Card className="shadow-2xl text-slate-100 bg-transparent/10 backdrop-blur-2xl hover:scale-105 transition-all duration-300">
+        <Card className="shadow-2xl bg-slate-200 backdrop-blur-2xl border border-white/20 rounded-2xl p-6 text-black hover:scale-105 transition-all duration-300">
           <CardHeader>
             <CardTitle className="text-3xl font-sans font-semibold text-center">
               Click below to find the way to your destination

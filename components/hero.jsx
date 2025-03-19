@@ -1,11 +1,11 @@
 "use client"
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls, PerspectiveCamera, Environment, Stars, PerformanceMonitor } from "@react-three/drei"
-import { Suspense, useRef, useState } from "react"
+import { Suspense, useState } from "react"
 import Search from "./search"
+import Image from "next/image";
 
 export default function Hero() {
-    const scrollRef = useRef(null)
     const [dpr, setDpr] = useState(1.5) 
     const isDarkMode =  "dark"
 
@@ -31,11 +31,20 @@ export default function Hero() {
             </div>
 
             <div className="relative z-10 flex flex-col items-center p-20  h-screen text-center">
+                <div className="flex justify-center items-center h-30 w-full text-white">
+                    <Image
+                      src="/NITM_logo.png"
+                      alt="NITM logo"
+                      width={150}
+                      height={150}
+                      className="absolute items-center z-10"
+                    />
+                </div>
                 <div className=" backdrop-blur-sm pt-8 w-[80vw] md:w-fit rounded-lg ">
                     <h1 className="text-4xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                         NITM USHER
                     </h1>
-                    <p className="text-md italic text-slate-100 md:text-xl mb-8 max-w-2xl">"Holds your hand and don't let you get lost"</p>
+                    <p className="text-md italic text-slate-100 md:text-xl mb-8 max-w-2xl">"Holds your hand and doesn't let you get lost"</p>
                     <Search />
                 </div>
             </div>
