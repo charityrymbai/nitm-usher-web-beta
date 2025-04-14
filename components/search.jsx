@@ -7,7 +7,7 @@ import { searchProfessors } from "@/lib/searchFn";
 import Link from "next/link";
 
 export default function Search() {
-    const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
   const [filtersearchProfessors, setFiltersearchProfessors] = useState([]);
 
   console.log(filtersearchProfessors);
@@ -21,7 +21,7 @@ export default function Search() {
     const results = searchProfessors(query);
     setFiltersearchProfessors(
       results.map((professor) => ({
-        id: professor.id, 
+        id: professor.id,
         name: professor.name,
       }))
     );
@@ -37,13 +37,13 @@ export default function Search() {
           setQuery(e.target.value);
           handleSearch();
         }}
-        className="w-full border text-white font-bold border-gray-300 p-3 rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:scale-105 transition-all duration-300"
+        className="w-full text-black font-bold border-red-900 border-2 p-3 rounded-md shadow-sm focus:ring focus:ring-red-600 focus:scale-105 transition-all duration-300"
       />
       {filtersearchProfessors.length > 0 && (
-        <Card className="absolute w-full mt-3 bg-black border border-gray-600 rounded-md shadow-lg overflow-hidden p-0">
-          <ul className="divide-y divide-gray-600">
+        <Card className="absolute w-full mt-3 bg-green-950/30 border border-green-900 rounded-md shadow-lg overflow-hidden p-0">
+          <ul className="divide-y divide-green-900">
             {filtersearchProfessors.map((result, index) => (
-              <li key={index} className="p-2 hover:bg-gray-800 text-white">
+              <li key={index} className="p-2 hover:bg-gray-800 text-black">
                 <Link href={`/${result.id}`}>
                   {result.name}
                 </Link>
