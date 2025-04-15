@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
 import { searchProfessors } from "@/lib/searchFn";
 import Link from "next/link";
 
@@ -37,20 +36,20 @@ export default function Search() {
           setQuery(e.target.value);
           handleSearch();
         }}
-        className="w-full text-black font-bold border-red-900 border-2 p-3 rounded-md shadow-sm focus:ring focus:ring-red-600 focus:scale-105 transition-all duration-300"
+        className="w-full text-black font-bold border-red-900 border-2 p-3 rounded-md shadow-sm focus:ring focus:ring-red-200 focus:scale-105 transition-all duration-300"
       />
       {filtersearchProfessors.length > 0 && (
-        <Card className="absolute w-full mt-3 bg-green-950/30 border border-green-900 rounded-md shadow-lg overflow-hidden p-0">
-          <ul className="divide-y divide-green-900">
+        <div className="absolute w-full mt-3 bg-green-950/30 border border-green-900 rounded-md shadow-lg overflow-hidden p-0">
+          <ul className="divide-y divide-green-950/30">
             {filtersearchProfessors.map((result, index) => (
-              <li key={index} className="p-2 hover:bg-gray-800 text-black">
-                <Link href={`/${result.id}`}>
+              <li key={index} className="p-2 hover:bg-green-800/30 text-black">
+                <Link href={`/${result.id}`} className="text-lg">
                   {result.name}
                 </Link>
               </li>
             ))}
           </ul>
-        </Card>
+        </div>
       )}
     </div>
   );

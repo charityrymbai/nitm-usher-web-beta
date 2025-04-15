@@ -61,7 +61,7 @@ function Homepage() {
             <div className="absolute z-10 flex bottom-1/13 h-16 justify-center w-full">
                 <button
                     onClick={handleClick}
-                    className={`group flex font-serif items-center gap-2 px-6 py-3 rounded-full font-semibold text-lg shadow-2xl backdrop-blur-md transition-all duration-400
+                    className={`group flex font-serif items-center gap-2 px-6 py-3 mt-2 rounded-full font-semibold text-lg shadow-2xl backdrop-blur-md transition-all duration-400
                         ${clicked
                             ? 'bg-green-700 text-white scale-95'
                             : 'bg-white/70 text-green-800 border-2 border-green-600 hopping'}
