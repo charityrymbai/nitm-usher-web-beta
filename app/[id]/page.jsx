@@ -39,23 +39,23 @@ export default function Page() {
             src={"/bg2.png"}
             alt="Background"
             fill
-            className={`object-cover opacity-40 mix-blend-multiply`}
+            className={`object-cover h-screen opacity-40 mix-blend-multiply`}
           />
         </div>
       </div>
       <div className="absolute inset-0 z-10 " />
       <div className="relative z-20 h-full p-10 text-center font-bold text-2xl text-yellow-900">
         <Card className="shadow-2xl bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl p-6 hover:scale-110 transition-all duration-300 mb-6">
-            <CardTitle className="text-[8vw] md:text-2xl font-serif text-slate-900 font-bold text-center">{name}</CardTitle>
+            <CardTitle className="text-[6vw] md:text-2xl font-serif text-slate-900 font-bold text-center">{name}</CardTitle>
         </Card>
-        <div className="w-full mt-4">
-          <Card className="shadow-2xl flex flex-col justify-center items-center bg-transparent/10 backdrop-blur-2xl hover:scale-110 transition-all duration-300">
+        <div className="w-full">
+          <Card className="shadow-2xl pt-0 flex flex-col justify-center items-center bg-transparent/10 backdrop-blur-2xl hover:scale-110 transition-all duration-300">
             <Image
               src={"/block.svg"}
               alt="Block"
-              width={200}
-              height={200}
-              className="object-cover "
+              width={150}
+              height={150}
+              className="object-cover"
             />
               <div className="text-[8vw] md:text-3xl text-slate-900 font-mono font-bold text-center">Block : {block}</div>
               <div className="text-[8vw] md:text-3xl text-slate-900 font-mono font-bold text-center">Floor : {floor}</div>

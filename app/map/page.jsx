@@ -21,7 +21,7 @@ export default function Map() {
             <div className="relative flex flex-col items-center z-20 h-full p-10 text-center font-bold font-mono text-2xl text-yellow-900">
                 ENTER YOUR DESTINATION
                 <Search />
-                <div className='mt-20'>
+                <div className='mt-[25vh]'>
                     <DotLottieReact
                         src="/walker.lottie"
                         loop

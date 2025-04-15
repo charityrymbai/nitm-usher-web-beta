@@ -31,7 +31,7 @@ export default function Search() {
     <div className="w-full max-w-md mx-auto mt-10 relative">
       <Input
         type="text"
-        placeholder="Start with a stakeholder's name ..."
+        placeholder="Search Here ..."
         value={query}
         onChange={(e) => {
           setQuery(e.target.value);
